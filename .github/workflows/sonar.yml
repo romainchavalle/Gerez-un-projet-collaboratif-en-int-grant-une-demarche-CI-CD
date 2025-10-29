@@ -65,7 +65,6 @@ jobs:
           java-version: '17'
 
       - name: Build & tests (Maven) - génère JaCoCo
-        working-directory: backend
         run: mvn -B -DskipTests=false clean verify
 
       - name: Sonar - Maven analysis (backend)
