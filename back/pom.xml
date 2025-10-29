@@ -16,7 +16,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<sonar.organization>romainchavalle</sonar.organization>
-		<sonar.projectKey>romainchavalle_bobapp_backend</sonar.projectKey>
+		<sonar.projectKey>romainchavalle_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD</sonar.projectKey>
 	</properties>
 	<dependencies>
 		<dependency>
