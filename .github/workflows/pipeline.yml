@@ -51,7 +51,9 @@ jobs:
       - name: install scanner
         run: npm install -g sonarqube-scanner
       - name: run sonar scanner
-        run: sonar-scanner -Dsonar.token=${{secrets.SONAR_TOKEN}}
+        run: sonar-scanner \
+             -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
+             -Dsonar.javascript.lcov.reportPaths=coverage/bobapp/lcov-report/lcov.info
 
 
   build-push-dockers:
