@@ -48,12 +48,25 @@ jobs:
         with:
           name: Karma Reports
           path: front/coverage/bobapp
-      - name: install scanner
-        run: npm install -g sonarqube-scanner
-      - name: run sonar scanner
-        run: sonar-scanner \
-             -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
-             -Dsonar.javascript.lcov.reportPaths=coverage/bobapp/lcov-report/lcov.info
+      - name: Check coverage report exists
+        run: ls -la coverage/bobapp
+
+      - name: Check lcov info for jokes.service.ts
+        run: grep "jokes.service.ts" coverage/bobapp/lcov.info || echo "No coverage info for jokes.service.ts"
+
+      - uses: sonarsource/sonarqube-scan-action@v5
+        with:
+          projectBaseDir: front
+          args: >
+            -Dsonar.organization=romainchavalle
+            -Dsonar.projectKey=romainchavalle_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD_front
+            -Dsonar.sources=src/
+            -Dsonar.coverage.exclusions=**/*.spec.ts,src/environments/**,src/main.ts,src/test.ts
+            -Dsonar.inclusions=src/app/app.component.ts,src/app/services/jokes.service.ts
+            -Dsonar.javascript.lcov.reportPaths=./coverage/bobapp/lcov.info
+
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
 
   build-push-dockers:
