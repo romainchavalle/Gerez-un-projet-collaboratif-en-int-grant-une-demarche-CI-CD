@@ -55,9 +55,10 @@ jobs:
           args: >
             -Dsonar.organization=romainchavalle
             -Dsonar.projectKey=romainchavalle_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD_front
-            -Dsonar.sources=src/
-            -Dsonar.coverage.exclusions=**/*.spec.ts,src/environments/**,src/main.ts,src/test.ts
-            -Dsonar.inclusions=src/app/app.component.ts,src/app/services/jokes.service.ts
+            -Dsonar.sources=src
+            -Dsonar.tests=src
+            -Dsonar.test.inclusions=**/*.spec.ts
+            -Dsonar.coverage.exclusions=src/environments/**,src/main.ts,src/test.ts,**/*.spec.ts
             -Dsonar.javascript.lcov.reportPaths=./coverage/bobapp/lcov.info
 
         env:
