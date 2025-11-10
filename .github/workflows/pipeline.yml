@@ -48,11 +48,6 @@ jobs:
         with:
           name: Karma Reports
           path: front/coverage/bobapp
-      - name: Check coverage report exists
-        run: ls -la coverage/bobapp
-
-      - name: Check lcov info for jokes.service.ts
-        run: grep "jokes.service.ts" coverage/bobapp/lcov.info || echo "No coverage info for jokes.service.ts"
 
       - uses: sonarsource/sonarqube-scan-action@v5
         with:
